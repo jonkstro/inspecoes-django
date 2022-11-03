@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'plataforma/css/css.css' %}">
+{% endblock %}
+
+{% block 'body' %}
+
+    {% if messages %}
+        <br>
+        {% for message in messages %}
+            <div class="alert {{message.tags}}">
+            {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Ordem de Inspeção</th>
+                        <th scope="col">Nota de Inspeção</th>
+                        <th scope="col">SE/LT</th>
+                        <th scope="col">Tipo Insp</th>
+                        <th scope="col">Status</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for insp in inspecao %}
+                        <tr>
+                        <th scope="row">{{insp.ordem}}</th>
+                        <td>{{insp.nota}}</td>
+                        <td>{{insp.cod_local_inst}}</td>
+                        <td>{{insp.tipo_insp}}</td>
+                        <td>{{insp.status}}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal">
+                                Add Insp
+                            </button>
+                        </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>  
+
+
+    {% endblock%}
