@@ -3,7 +3,7 @@
 import requests
 import csv
 
-url = 'http://127.0.0.1:8000/'
+url = 'http://127.0.0.1:8000/plano-manut'
 
 with open(r'C:\Users\U1106811\Documents\CsvPmAtPython.csv', newline='') as f:
     reader = csv.reader(f, delimiter=';')
@@ -21,6 +21,6 @@ for i in dados:
         'equipamento': i[7]
     }
     x = requests.post(url, json = myobj)
-    
+    print(f'OK, inserido a ordem {i[0]}')
 
 

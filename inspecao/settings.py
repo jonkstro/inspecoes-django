@@ -151,5 +151,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Converter decimal pra string na saída do Json
 REST_FRAMEWORK = {
     'DATE_FORMAT': f"%d/%m/%Y",
-
+    'DATE_INPUT_FORMAT': f"%d/%m/%Y"
 }
+DATE_INPUT_FORMATS = [f'%d/%m/%Y']
