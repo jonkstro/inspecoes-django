@@ -3,60 +3,60 @@
 {% load static %}
 
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'plataforma/css/css.css' %}">
+<link rel="stylesheet" href="{% static 'plataforma/css/css.css' %}">
 {% endblock %}
 
 {% block 'body' %}
-
-    {% if messages %}
-        <br>
-        {% for message in messages %}
-            <div class="alert {{message.tags}}">
-            {{message}}
-            </div>
-        {% endfor %}
-    {% endif %}
+{% if messages %}
     <br>
-    <nav style="background-color: #2745dbc7;" class="navbar navbar-expand-lg navbar-dark">
-        <a style="font-weight: bold" class="navbar-brand" href="#">Inspeções AT</a>
-        <span style="color: white; margin-left: 50px; ">SE/LT:</span>
-        <select style=" margin-left: 5px; width: 100px;" name="tipo_local" class="form-control">
-            <option value="SE">SE</option>
-            <option value="LT">LT</option>
-        </select>
-        <span style="color: white; margin-left: 50px; ">Tipo de Inspeção:</span>
-        <select style=" margin-left: 5px; width: 200px;"  name="tipo_insp" class="form-control">
-            <option value="M1">M1</option>
-            <option value="M2">M2</option>
-            <option value="TERMOGRAFICA">TERMOGRAFICA</option>
-            <option value="CROMATOGRAFICA">CROMATOGRAFICA</option>
-            <option value="FISICO-QUIMICA">FISICO-QUIMICA</option>
-            <option value="LAVAGEM">LAVAGEM</option>
-            <option value="LIMPEZA-DE-PATIO">LIMPEZA DE PATIO</option>
-            <option value="CONTROLE">CONTROLE</option>
-            <option value="MINUCIOSA">MINUCIOSA</option>
-            <option value="LIMPEZA-DE-FAIXA">LIMPEZA DE FAIXA</option>
-            <option value="RS1">RS1</option>
-        </select>
-        <span style="color: white; margin-left: 50px; ">Mês da Inspeção:</span>
-        <select style=" margin-left: 5px; width: 100px;"  name="mes" class="form-control">
-            <option value="JAN">JAN</option>
-            <option value="FEV">FEV</option>
-            <option value="MAR">MAR</option>
-            <option value="ABR">ABR</option>
-            <option value="MAI">MAI</option>
-            <option value="JUN">JUN</option>
-            <option value="JUL">JUL</option>
-            <option value="AGO">AGO</option>
-            <option value="SET">SET</option>
-            <option value="OUT">OUT</option>
-            <option value="NOV">NOV</option>
-            <option value="DEZ">DEZ</option>
-            
-        </select>
-        <button style="border-radius: 30px; margin-left: 150px; width: 100px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#modal">
-            Filtrar
-        </button>
+    {% for message in messages %}
+        <div class="alert {{message.tags}}">
+        {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<br>
+<nav style="background-color: #2745dbc7; justify-content: space-around;" class="navbar navbar-expand-lg navbar-dark">
+    <a style="font-weight: bold" class="navbar-brand" href="#">Inspeções AT</a>
+    <div>
+
+            <form action="{% url 'filtrar' %}" method="POST" style="width: 100%; display: flex;">{% csrf_token %}
+                <span style="color: white; margin: 0 1rem; ">Ordem de Inspeção:</span>
+                <input type="number" name="ordem">
+                <!-- <span style="color: white; margin-left: 50px; ">Tipo de Inspeção:</span>
+                    <select style=" margin-left: 5px; width: 200px;"  name="tipo_insp" class="form-control">
+                        <option value="M1">M1</option>
+                        <option value="M2">M2</option>
+                <option value="TERMOGRAFICA">TERMOGRAFICA</option>
+                <option value="CROMATOGRAFICA">CROMATOGRAFICA</option>
+                <option value="FISICO-QUIMICA">FISICO-QUIMICA</option>
+                <option value="LAVAGEM">LAVAGEM</option>
+                <option value="LIMPEZA-DE-PATIO">LIMPEZA DE PATIO</option>
+                <option value="CONTROLE">CONTROLE</option>
+                <option value="MINUCIOSA">MINUCIOSA</option>
+                <option value="LIMPEZA-DE-FAIXA">LIMPEZA DE FAIXA</option>
+                <option value="RS1">RS1</option>
+            </select>
+            <span style="color: white; margin-left: 50px; ">Mês da Inspeção:</span>
+            <select style=" margin-left: 5px; width: 100px;"  name="mes" class="form-control">
+                <option value="1">JAN</option>
+                <option value="2">FEV</option>
+                <option value="3">MAR</option>
+                <option value="4">ABR</option>
+                <option value="5">MAI</option>
+                <option value="6">JUN</option>
+                <option value="7">JUL</option>
+                <option value="8">AGO</option>
+                <option value="9">SET</option>
+                <option value="10">OUT</option>
+                <option value="11">NOV</option>
+                <option value="12">DEZ</option>
+                
+            </select> -->
+            <input type="submit" style="border-radius: 30px; margin-left: 150px; width: 100px;" type="button" class="btn btn-success"></input>
+        </form>
+    </div>
     </nav>
     <div class="row">
         <div class="col-md-12">

@@ -25,7 +25,6 @@ class Inspecao(models.Model):
     tempo_desloc = models.FloatField()
     tempo_trab = models.FloatField()
     tempo_escrit = models.FloatField()
-    is_lac = models.BooleanField()
 
     def __str__(self):
         return self.ordem.ordem

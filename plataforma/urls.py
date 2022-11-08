@@ -18,5 +18,7 @@ router = routers.DefaultRouter()
 router.register(r'plano-manut', PlanoManutViewset, basename='PlanoManut')
 urlpatterns = [
     path('', views.plano_manut, name='plano_manut'),
+    # path('upload', views.upload, name='upload'),
+    path('filtrar', views.filtrar, name='filtrar'),
     path('', include(router.urls)),
 ]
